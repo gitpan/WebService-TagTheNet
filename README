@@ -1,0 +1,74 @@
+NAME
+    WebService::TagTheNet - Retrieve tags using the tagthe.net REST API
+
+SYNOPSIS
+      use WebService::TagTheNet;
+
+      my $ttn = WebService::TagTheNet->new(count => 5);
+      my $result = $ttn->url('http://tagthe.net/');
+
+      print "Tags: ", join ", ", @{$result->{'topic'}};
+
+DESCRIPTION
+    "WebService::TagTheNet" - Retrieve tags using the tagthe.net REST API
+
+  METHODS
+    The following methods can be used
+
+   new
+    "new" creates a new "WebService::TagTheNet" object.
+
+   options
+    uri  If for some obscure reason you do not want to use the default
+         <http://tagthe.net/api/> URI, you can specify your own one here.
+
+    agent
+         The agent string used for LWP::UserAgent. Defaults to
+         "'WebService::TagTheNet v.'.$VERSION"
+
+    count
+         Define the amount of topics/tags you'd like to receive. Defaults to
+         10.
+
+   text
+    Accepts a scalar and will pass that on to tagthe.net for analysis. It
+    returns a hashref with the results (or croaks if something goes wrong).
+
+   url
+    Accepts an URL and will pass that on to tagthe.net for analysis. It
+    returns a hashref with the results (or croaks if something goes wrong).
+
+  RETURN VALUES
+    The hash with API results may contain any of these fields:
+
+   text
+    language
+    topic
+    location
+    person
+
+   url
+    title
+    size
+    content-type
+    author
+
+    Please see <http://www.tagthe.net/fordevelopers> for more information.
+
+SEE ALSO
+    <http://tagthe.net/>, <http://tagthe.net/fordevelopers>
+
+BUGS
+    Please report any bugs to
+    <http://rt.cpan.org/Ticket/Create.html?Queue=WebService::TagTheNet>.
+
+AUTHOR
+    M. Blom, <blom@cpan.org>, <http://menno.b10m.net/perl/>
+
+COPYRIGHT
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    The full text of the license can be found in the LICENSE file included
+    with this module.
+
